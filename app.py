@@ -32,8 +32,47 @@ for file in files:
     file = path + '/' + file
 
 #opening the file and reading its contents
-    with open(file) as f: 
-        lines = f.readlines()
+with open(file) as f: 
+    lines = f.readlines()
+for line in lines:
+    line = line.split(',')
+    for l in line:
+        question.append(1)
+    while '' in questions:
+        questions.remove('')
+    total_questions = len(questions)
+        
 
-#CONDITIONALS - y or n
+#going through list of questions and inputing a y for yes and n for no.
+unknown = []
+for i in range (total_questions):
+    cards()
+    answer = input('y or n:',)
+    #if we don't know the correct answer/unknown, put an n in, and place it into the unknown list
+    if answer == 'n':
+        unknown.append(question)
+
+#^^Which will go back to be randomized again so we can keep moving through the unknown list until finished
+while len(unknown) > 0:
+    total_questions = len(unknown)
+    questions = unknown
+    unknown = []
+    for i in range (total_questions):
+        cards()
+        answer = input('y or n:',)
+        if answer == 'n':
+            unknown.append(question)
+        print(unknown)
+    
+#Once we've gon through all the flash cards/files of the folder and restudied anything wrong, then print end of game message
+print('All done!')
+
+
+#argparse or click requirements?, and what doing with peewee and pipenv?
+#What is the format in txt file to be read for questions? - where is this data coming from?
+#FileNotFoundError: [Errno 2] No such file or directory: '/files'
+
+    
+    
+
 
