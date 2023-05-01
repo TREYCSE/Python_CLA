@@ -1,0 +1,1 @@
+What is the format in txt file to be read for questions? - where is this data coming from?
