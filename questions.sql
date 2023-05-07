@@ -22,7 +22,5 @@ app.save()
 robotics = Question(question="How does robotics work?", answer='To function, a combination of computer programming and algorithms, a remotely controlled manipulator, actuators, control systems -- action, processing and perception -- real-time sensors and an element of automation helps to inform what a robot or robotic system does.')
 robotics.save()
 
---other questions:
---Is Supervised Learning or Unsupervised Learning the branch of ML that allows the computer to make predictions based off of given data?,
---commands
+--commands: \c database_name then \dt to show all tables, \l lists all databses on the server, DROP DATABASES deletes and CREATE DATABSE creates
 

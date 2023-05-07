@@ -1,10 +1,20 @@
-import random #choosing random choices
-import argparse #file system to pass in a file, do something to that file in your program, output the result or just import in other py?
+# Import the package we installed - are we supposed to re-install requests? pipenv install requests, was getting error but cleaned up files no errors
+import requests
+# Call .get() to a remote address - //
+response = requests.get('https://httpbin.org/ip')
+# Get our IP address from the response and print it in an f string
+print('Your IP is {0}'.format(response.json()['origin']))
 
-#import os #operating system - for finding files on the computer - getting rid of this
+#Note that your database settings may differ
+from peewee import *
+import psycopg2 ; print(psycopg2)
+#changed user to computer user from postgres and used commands to change password: whoami, \password treyweathers, then created postgres instead
+db = PostgresqlDatabase('questions', user='postgres', password='hidden',
+                        host='localhost', port=5432)
+db.connect()
+print('connected!')
 
-#import here and delete that file_parser.py?
-import argparse
+import argparse #file system to pass in a file, do something to that file in your program, output the result
 def file_parser(input_file, output_file=''):
     print(f'Processing {input_file}')
     print('Finished processing')
@@ -20,17 +30,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-#import questions from sql file?
-#delete practice database "people" create new one Questions!!!
-
-# Import the package we installed - are we supposed to re-install requests? pipenv install requests
-import requests
-
-# Call .get() to a remote address
-response = requests.get('https://httpbin.org/ip')
-
-# Get our IP address from the response and print it in an f string
-print('Your IP is {0}'.format(response.json()['origin']))
+import random #choosing random choices
+#import questions from sql database after debugging and fix functions
 
 #function to grab a random question from a list of questions,
 def cards ():
@@ -42,35 +43,9 @@ def cards ():
     questions.remove(question)
     print(question, '::::' , len(questions), '/')
 
-#Access a folder on the computer using the folder's path to search for files
-#path = 'C:/Users/treyweathers/Desktop/THE_PLAN/1_EDUCATION/APP_DEV/GENASSEM_FULLSTACK/CODES/Python_CLA/files'
-#files = os.listdir(path)
-
-#A list of names of these file paths are stored as a list in the variable files
-#The only files we want are text files so we are removing files that are not txt
-#for file in files:
-    #if 'txt' not in file:
-        #files.remove(file)
-
-#Shuffle the list of files so that each time we run the program, we will have a different order of flash cards
-random.shuffle(Questions)
-
-#Creating a full path for each file
-#for file in files:
-    #print('#', file, '#')
-    #file = path + '/' + file
-
-#opening the file and reading its contents
-#with open(file) as f: 
-#    lines = f.readlines()
-#for line in lines:
- #   line = line.split(',')
-  #  for l in line:
-   #     question.append(1)
-    #while '' in questions:
-     #   questions.remove('')
-    total_questions = len(questions)
-        
+#Shuffle the list of cards so that each time we run the program, we will have a different order of flash cards
+#random.shuffle(questions)
+print(cards)
 
 #going through list of questions and inputing a y for yes and n for no.
 unknown = []
@@ -95,5 +70,3 @@ while len(unknown) > 0:
     
 #Once we've gon through all the flash cards  and restudied anything wrong, then print end of game message
 print('All done!')
-
-#python3 app.py
